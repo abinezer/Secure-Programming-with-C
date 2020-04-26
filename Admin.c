@@ -5,6 +5,7 @@
 #include<C:\Abishai\SecureC_project\PbAbi.h>
 #include<C:\Abishai\SecureC_project\PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 
+//MSC00-A. Compile cleanly at high warning levels
 int* ptr;
 //Admin Panel
 void admin()
@@ -19,8 +20,20 @@ void admin()
 	char nm[50];
 	char ch;
 	char sp;
-	char str1[6] = "Admin";
-	char str2[8] = "SR@3111";
+	//DCL32-C. Guarantee identifiers are unique
+	
+	//char str2[8] = "SR@3111";
+	//char str1[6] = "Admin";
+	//STR05-A. Prefer making string literals const-qualified
+	//any attempt made to change these leads to an error
+	char const str1[6] = "Admin";
+	//EXP31-C. Do not modify constant values
+	//STR31-C. Guarantee that storage for strings has sufficient space for
+	//character data and the null terminator
+	
+	char const str2[8] = "SR@3111";
+	//STR30-C. Do not attempt to modify string literals
+	//DCL03-A. Place const as the rightmost declaration specifier
 	//int i,no,yr,n,j,max,opt,no1;
 	//DCL04-C Not more than 1 var per declaration.
 	int i;
@@ -40,7 +53,8 @@ void admin()
 		//clrscr();
 		printf("\nEnter username: ");
 		scanf("%s", user);
-		if ((strcmp(user, str1)) != 0) //EXP20-C explicitly check if condition.
+		if ((strcmp(user, str1)) != 0)
+		 //EXP20-C explicitly check if condition.
 		{
 			printf("Wrong Username");
 			_getch();
@@ -56,7 +70,8 @@ void admin()
 				printf("%c", '*');
 			}
 			pass[i] = '\0';
-			if ((strcmp(pass, str2)) != 0) //EXP20-C explicitly check if condition.
+			if ((strcmp(pass, str2)) != 0)
+			 //EXP20-C explicitly check if condition.
 			{
 				printf("\nWrong Password\n");
 				_getch();
@@ -79,6 +94,7 @@ void admin()
 						//clrscr();
 						printf("\nNew Election Initiation:\n");
 						f1 = fopen("PreviousElection.txt", "w");
+						//FIO31-C. Do not simultaneously open the same file multiple times
 						printf("\nElections for which Year: ");
 						scanf("%d", &year);
 						printf("Enter branch code:");
@@ -87,13 +103,28 @@ void admin()
 						scanf("%d", &maxrollno);
 						printf("Enter the no. of candidates:");
 						scanf("%d", &no);
-						ptr = (int*)malloc((maxrollno) * sizeof(int));
+
+						//ptr = (int*)malloc((maxrollno) * sizeof(int));
+						//MEM02-A. Do not cast the return value from malloc()
+						ptr = malloc((maxrollno) * sizeof(int));
+
+						//MEM03-A. Clear sensitive information stored in dynamic memory prior to
+						//deallocation
+						
+						//MEM31-C. Free dynamically allocated memory exactly once
+						//MEM34-C. Only free memory allocated dynamically
+
+						
 						for (i = 0; i < maxrollno; i++)
 							ptr[i] = 0;
 						fprintf(f1, "%d\n%s\n%d\n%d", year, branch, maxrollno, no);
 						fclose(f1);
 						flcreate(no);
+						//ARR31-C. Use consistent array notation across all source files
 						a = (CAND*)malloc(no * cand_size);
+						//MEM01-A. Set pointers to dynamically allocated memory to NULL after they
+						//are released
+						//MEM31-C. Free dynamically allocated memory exactly once
 						cnt = no;
 
 						i = 0; j = 1;
@@ -116,6 +147,8 @@ void admin()
 								if (sp == '1')
 								{
 									fpb = fopen("blank.txt", "w");
+									//FIO06-A. Create files with appropriate access permissions
+									//FIO11-A. Take care when specifying the mode parameter of fopen()
 									if (fpb == NULL)
 									{
 										printf("\nProcess Failed");
@@ -144,10 +177,11 @@ void admin()
 
 						return;
 
-
+						//MSC04-A. Use comments consistently and in a readable fashion
 						//TO CONTINUE PREVIOUS ELECTION
 					case '2':
 						f1 = fopen("PreviousElection.txt", "r");
+						//FIO11-A. Take care when specifying the mode parameter of fopen()
 						if (f1 == NULL)
 							printf("Not Exist");
 						fscanf(f1, "%d", &year);
@@ -166,17 +200,19 @@ void admin()
 						}
 						fclose(f1);
 						flag = 1;
+						//DCL01-A. Do not reuse variable names in sub-scopes
 						for (i = 1; i <= cnt; i++)
 						{
 							sprintf(text, "a%d.txt", i);
 							fp = fopen(text, "r+");
+							//FIO31-C. Do not simultaneously open the same file multiple times
 							fscanf(fp, "%d", &((a + i - 1)->count));
 							fclose(fp);
 						}
 						printf("Election Continued");
 						_getch();
 						break;
-
+						//MSC07-A. Detect and remove dead code
 						//TO DELETE VOTE FOR SELECTED PRN
 					case '3':
 						printf("Search PRN:");
@@ -194,7 +230,8 @@ void admin()
 							delFromfile(prn, ptr[rno - 1]);
 						}
 						break;
-
+						//MSC13-A. Detect and remove unused values
+						//MSC12-A. Detect and remove code that has no effect
 						//TO DISPLAY RESULT
 					case '4':
 						//clrscr();

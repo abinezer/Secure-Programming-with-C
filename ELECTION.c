@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<C:\Abishai\SecureC_project\PbAbi.h>
 #include<C:\Abishai\SecureC_project\PbAbi2.h>
+//PRE08-C. Guarantee that header file names are unique
 //MSC00-A. Compile cleanly at high warning levels
 
 #define max_size 20

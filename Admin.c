@@ -21,7 +21,7 @@ void admin()
 	char ch;
 	char sp;
 	//DCL32-C. Guarantee identifiers are unique
-	
+
 	//char str2[8] = "SR@3111";
 	//char str1[6] = "Admin";
 	//STR05-A. Prefer making string literals const-qualified
@@ -30,7 +30,7 @@ void admin()
 	//EXP31-C. Do not modify constant values
 	//STR31-C. Guarantee that storage for strings has sufficient space for
 	//character data and the null terminator
-	
+
 	char const str2[8] = "SR@3111";
 	//STR30-C. Do not attempt to modify string literals
 	//DCL03-A. Place const as the rightmost declaration specifier
@@ -54,7 +54,7 @@ void admin()
 		printf("\nEnter username: ");
 		scanf("%s", user);
 		if ((strcmp(user, str1)) != 0)
-		 //EXP20-C explicitly check if condition.
+			//EXP20-C explicitly check if condition.
 		{
 			printf("Wrong Username");
 			_getch();
@@ -71,7 +71,7 @@ void admin()
 			}
 			pass[i] = '\0';
 			if ((strcmp(pass, str2)) != 0)
-			 //EXP20-C explicitly check if condition.
+				//EXP20-C explicitly check if condition.
 			{
 				printf("\nWrong Password\n");
 				_getch();
@@ -106,15 +106,15 @@ void admin()
 
 						//ptr = (int*)malloc((maxrollno) * sizeof(int));
 						//MEM02-A. Do not cast the return value from malloc()
-						ptr = malloc((maxrollno) * sizeof(int));
+						ptr = (int*)malloc((maxrollno) * sizeof(int));
 
 						//MEM03-A. Clear sensitive information stored in dynamic memory prior to
 						//deallocation
-						
+
 						//MEM31-C. Free dynamically allocated memory exactly once
 						//MEM34-C. Only free memory allocated dynamically
 
-						
+
 						for (i = 0; i < maxrollno; i++)
 							ptr[i] = 0;
 						fprintf(f1, "%d\n%s\n%d\n%d", year, branch, maxrollno, no);

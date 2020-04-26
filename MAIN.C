@@ -3,6 +3,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<C:\Abishai\SecureC_project\PbAbi.h>
+#include<C:\Abishai\SecureC_project\PbAbi2.h>
 char n;
 int* ptr;
 int main()

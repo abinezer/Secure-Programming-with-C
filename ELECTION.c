@@ -3,18 +3,21 @@
 #include<string.h>
 #include<stdlib.h>
 #include<C:\Abishai\SecureC_project\PbAbi.h>
-#include<C:\Abishai\SecureC_project\PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
+#include<C:\Abishai\SecureC_project\PbAbi2.h>
+//MSC00-A. Compile cleanly at high warning levels
 
-
+#define max_size 20
 //Structure that holds candidate name and count of vote
+//DCL05-A. Use typedefs to improve code readability
 typedef struct cand
 {
-	 char nm[20];
+	 char nm[max_size];
+	 //DCL06-A. Use meaningful symbolic constants to represent literal values in program logic
 	 int count;
 }CAND;
 CAND *a;
 
-
+//ARR31-C. Use consistent array notation across all source files
 
 
 
@@ -38,8 +41,9 @@ void candname(CAND *a)
 	fclose(f1);
 
 }
+//FIO40-C. Reset strings on fgets() failure
 //fn that creates number of files equal to number of candidates
-
+//MSC07-A. Detect and remove dead code
 void flcreate(int no)
 {
 	FILE *fp;
@@ -56,9 +60,11 @@ void flcreate(int no)
 	}
 }
 
-
+//MSC13-A. Detect and remove unused values
+//MSC12-A. Detect and remove code that has no effect
 
 //fn to delete illegal vote
+//MSC04-A. Use comments consistently and in a readable fashion
 void delFromfile(char sprn[15],int fno)
 {
 	FILE*fp;
@@ -74,6 +80,7 @@ void delFromfile(char sprn[15],int fno)
 	char str[16];
 	char vprn[16];
 	char text[20];
+	//DCL32-C. Guarantee identifiers are unique
 	//clrscr();
 	no=cnt;
 	if(flag!=1) //EXP20-C explicitly check if condition.
@@ -104,6 +111,7 @@ void delFromfile(char sprn[15],int fno)
 				_getch();
 				return;
 			}
+			//FIO35-C. Use feof() and ferror() to detect end-of-file and file errors
 			if(feof(fp))
 			{
 				printf("\nNot Found");
@@ -119,6 +127,7 @@ void delFromfile(char sprn[15],int fno)
 	{
 		sprintf(text,"a%d.txt",k+1);
 		fp=fopen(text,"r");
+		//FIO11-A. Take care when specifying the mode parameter of fopen()
 		flg=1;
 		while(flg)
 		{
@@ -134,6 +143,7 @@ void delFromfile(char sprn[15],int fno)
 				pos=ftell(fp);
 				fclose(fp);
 				fp=fopen(text,"r+");
+				//FIO31-C. Do not simultaneously open the same file multiple times
 				fseek(fp, pos, SEEK_SET);
 				fseek(fp, -16, SEEK_CUR);
 				for(j=0;j<14;j++)
@@ -156,6 +166,7 @@ void delFromfile(char sprn[15],int fno)
 					printf("Not Found");
 				flg=0;
 				fclose(fp);
+				//FIO46-C. Do not access a closed file
 			}
 		}
 		k++;
@@ -164,7 +175,3 @@ void delFromfile(char sprn[15],int fno)
 	 }
 	_getch();
 }
-
-
-
-

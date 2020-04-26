@@ -29,8 +29,8 @@ void stu()
 	int j;
 	int res;
 	int k = 0;
-	int nos;
-	int choice;
+	//int nos; //MSC13-A. Detect and remove unused values
+	//int choice;
 	int roll;
 	int val;
 	char no;
@@ -89,7 +89,7 @@ void stu()
 				while (k < num)
 				{
 					sprintf(text, "a%d.txt", k + 1);
-					fp = fopen(text, "r");
+					fp = fopen(text, "r"); //FIO11-A. Take care when specifying the mode parameter of fopen()
 					flg = 1;
 					while (flg)
 					{
@@ -104,6 +104,7 @@ void stu()
 							_getch();
 							goto prn;
 						}
+						//FIO35-C. Use feof() and ferror() to detect end-of-file and file errors
 						if (feof(fp) != 0)  //EXP20-C explicitly check the if condition.
 						{
 							flg = 0;

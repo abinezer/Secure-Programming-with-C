@@ -26,8 +26,8 @@ int isSpecial(char prn[15])
 {
 	FILE* fp;
 	char sprn[15];
-	fp = fopen("blank.txt", "r");
-	while (feof(fp) == 0)
+	fp = fopen("blank.txt", "r"); //FIO11-A. Take care when specifying the mode parameter of fopen()
+	while (feof(fp) == 0)  //FIO35-C. Use feof() and ferror() to detect end-of-file and file errors
 	{
 		fgets(sprn, 99, fp);
 		sprn[14] = '\0';

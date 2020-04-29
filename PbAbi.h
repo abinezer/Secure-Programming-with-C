@@ -11,8 +11,8 @@ typedef struct cand
 CAND* a;
 //ARR31-C. Use consistent array notation across all source files
 
-extern void stu();
-extern void admin();
+void stu();
+void admin();
 extern int isSpecial(char prn[15]);
 extern int isAuthentic(char prn[15]);
 //DCL07-C.Include the appropriate type information in function declarators. 

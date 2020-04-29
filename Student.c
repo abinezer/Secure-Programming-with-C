@@ -5,6 +5,14 @@
 #include<C:\Abishai\SecureC_project\PbAbi.h>
 #include<C:\Abishai\SecureC_project\PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 //Student Panel
+
+struct fun1
+{
+	int (*pqr)(char prn[15]);
+	int (*lmn)(char prn[15]);
+};
+
+struct fun1 fun1 = { .pqr = isSpecial , .lmn = isAuthentic };
 void stu()
 {
 	FILE* fp, * f1;
@@ -56,7 +64,8 @@ void stu()
 			_getch();
 			continue;
 		}
-		val = isSpecial(prn);
+		//val = isSpecial(prn);
+		val = fun1.pqr(prn);
 		if (val == 1)
 		{
 			printf("\n  Blank number");
@@ -64,7 +73,8 @@ void stu()
 			false1++;
 			continue;
 		}
-		res = isAuthentic(prn);
+		//res = isAuthentic(prn);
+		res = fun1.lmn(prn);
 		if (res != 1)
 		{
 			printf("\n  Try Again(Press Enter)");

@@ -6,6 +6,14 @@
 #include<C:\Abishai\SecureC_project\PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 char n;
 int* ptr;
+
+struct fun
+{
+	void (*abc)(void);
+	void (*xyz)(void);
+};
+
+struct fun fun = { .abc = stu , .xyz = admin};
 int main()
 {
 	/*
@@ -33,10 +41,10 @@ int main()
 
 
 		if(n==49)
-				stu();
+				fun.abc();
 		else
 		{	if(n==50)
-				admin();
+				fun.xyz();
 			else
 			{
 				if(n==51)

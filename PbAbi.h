@@ -10,7 +10,7 @@ typedef struct cand
 }CAND;
 CAND* a;
 //ARR31-C. Use consistent array notation across all source files
-
+void candname(CAND* a);
 void stu();
 void admin();
 extern int isSpecial(char prn[15]);

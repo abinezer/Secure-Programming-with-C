@@ -1,12 +1,12 @@
 #include<stdio.h>
-#include<conio.h>
+#include<curses.h>
 #include<string.h>
 #include<stdlib.h>
-#include<C:\Abishai\SecureC_project\PbAbi.h>
-#include<C:\Abishai\SecureC_project\PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
+#include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
+#include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 
 //MSC00-A. Compile cleanly at high warning levels
-int* ptr;
+int* ptr; int flag;
 //Admin Panel
 void admin()
 {
@@ -17,7 +17,7 @@ void admin()
 	char pass[15];
 	char prn[15];
 	char text[20];
-	char nm[50];
+	//char nm[50];
 	char ch;
 	char sp;
 	//DCL32-C. Guarantee identifiers are unique
@@ -38,12 +38,12 @@ void admin()
 	//DCL04-C Not more than 1 var per declaration.
 	int i;
 	int no;
-	int yr;
-	int n;
+	//int yr;
+	//int n;
 	int j;
 	int max;
-	int opt;
-	int no1;
+	//int opt;
+	//int no1;
 	float tot = 0.0;
 	char null[2] = "0";
 	// INT01-C use size_t to represent the size of an object
@@ -57,7 +57,7 @@ void admin()
 			//EXP20-C explicitly check if condition.
 		{
 			printf("Wrong Username");
-			_getch();
+			getchar();
 			continue;
 		}
 		else
@@ -66,7 +66,7 @@ void admin()
 			printf("Enter Password: ");
 			for (i = 0; i < 7; i++)
 			{
-				pass[i] = _getch();
+				pass[i] = getchar();
 				printf("%c", '*');
 			}
 			pass[i] = '\0';
@@ -74,14 +74,14 @@ void admin()
 				//EXP20-C explicitly check if condition.
 			{
 				printf("\nWrong Password\n");
-				_getch();
+				getchar();
 				goto password;
 			}
 			else
 			{
 
 				printf("\n\nADMIN LOGIN SUCCESSFULL(Press Enter)");
-				_getch();
+				getchar();
 				while (1)
 				{
 					//clrscr();
@@ -152,7 +152,7 @@ void admin()
 									if (fpb == NULL)
 									{
 										printf("\nProcess Failed");
-										_getch();
+										getchar();
 										break;
 									}
 									printf("\nEnter 0 to stop\nEnter blank");
@@ -170,7 +170,7 @@ void admin()
 								else
 								{
 									printf("\nInvalid option");
-									_getch();
+									getchar();
 								}
 							}
 						}
@@ -210,7 +210,7 @@ void admin()
 							fclose(fp);
 						}
 						printf("Election Continued");
-						_getch();
+						getchar();
 						break;
 						//MSC07-A. Detect and remove dead code
 						//TO DELETE VOTE FOR SELECTED PRN
@@ -276,7 +276,7 @@ void admin()
 
 						printf("\n\n\t\t\tVoting Percentage:%0.2f ", (tot / maxrollno) * 100);
 						//printf("\n\t\t\tTotal Illegal attempts:%d",false);
-						_getch();
+						getchar();
 						//	flcreate(cnt);
 						break;
 
@@ -285,7 +285,7 @@ void admin()
 
 					default:
 						printf("Invalid Option");
-						_getch();
+						getchar();
 
 					}
 				}

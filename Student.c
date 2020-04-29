@@ -1,11 +1,12 @@
 #include<stdio.h>
-#include<conio.h>
+#include<curses.h>
 #include<string.h>
 #include<stdlib.h>
-#include<C:\Abishai\SecureC_project\PbAbi.h>
-#include<C:\Abishai\SecureC_project\PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
+#include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
+#include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 //Student Panel
 
+int flag; int false1;
 struct fun1
 {
 	int (*pqr)(char prn[15]);
@@ -15,7 +16,7 @@ struct fun1
 struct fun1 fun1 = { .pqr = isSpecial , .lmn = isAuthentic };
 void stu()
 {
-	FILE* fp, * f1;
+	FILE* fp;
 	CAND* b;
 
 	//char prn[15],text[20],d;
@@ -23,7 +24,7 @@ void stu()
 	//DCL04-C not more than 1 var per declaration
 	char prn[15];
 	char text[20];
-	char d;
+	//char d;
 	char str[16];
 	char vprn[16];
 	char stp[2] = "0";
@@ -33,15 +34,15 @@ void stu()
 	int len;
 	int num;
 	int i;
-	int opt;
+	//int opt;
 	int j;
 	int res;
 	int k = 0;
 	//int nos; //MSC13-A. Detect and remove unused values
 	//int choice;
-	int roll;
+	//int roll;
 	int val;
-	char no;
+	//char no;
 	char v1;
 	char v2;
 
@@ -61,7 +62,7 @@ void stu()
 		if (len < 14 || len>14)
 		{
 			printf("\nInvalid PRN(Incorrect length)\nTry Again(Press Enter)");
-			_getch();
+			getchar();
 			continue;
 		}
 		//val = isSpecial(prn);
@@ -69,7 +70,7 @@ void stu()
 		if (val == 1)
 		{
 			printf("\n  Blank number");
-			_getch();
+			getchar();
 			false1++;
 			continue;
 		}
@@ -78,7 +79,7 @@ void stu()
 		if (res != 1)
 		{
 			printf("\n  Try Again(Press Enter)");
-			_getch();
+			getchar();
 			continue;
 		}
 		else
@@ -89,7 +90,7 @@ void stu()
 				if (ptr[rno - 1] != 0) //EXP20-C explicitly check if condition.
 				{
 					printf("\n  Your PRN entered is already voted\n  Contact Admin for furthur query");
-					_getch();
+					getchar();
 					continue;
 				}
 			}
@@ -111,7 +112,7 @@ void stu()
 						{
 							printf("\n  The PRN %s has already voted\nContact Admin if it weren't you...!", prn);
 							fclose(fp);
-							_getch();
+							getchar();
 							goto prn;
 						}
 						//FIO35-C. Use feof() and ferror() to detect end-of-file and file errors
@@ -137,11 +138,11 @@ void stu()
 			while (1)
 			{
 				printf("\n\n  Your Vote(Enter Number):");
-				v1 = _getch();
+				v1 = getchar();
 				printf("*");
-				_getch();
+				getchar();
 				printf("\n  Confirm Your Vote:");
-				v2 = _getch();
+				v2 = getchar();
 				printf("*");
 				if (v1 == v2)
 					break;
@@ -156,7 +157,7 @@ void stu()
 			if ((v1 - 48) > num)
 			{
 				printf("\n  Invalid vote");
-				_getch();
+				getchar();
 				goto vote;
 				//	break;
 			}
@@ -166,7 +167,7 @@ void stu()
 
 
 				ptr[rno - 1] = (v1 - 48);
-				_getch();
+				getchar();
 				for (j = 0; j < num; j++)
 				{
 					if ((v1 - 48) == (j + 1))

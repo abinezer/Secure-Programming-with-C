@@ -1,13 +1,13 @@
 #include<stdio.h>
-#include<conio.h>
+#include<curses.h>
 #include<string.h>
 #include<stdlib.h>
-#include<C:\Abishai\SecureC_project\PbAbi.h>
-#include<C:\Abishai\SecureC_project\PbAbi2.h>
-//PRE08-C. Guarantee that header file names are unique
+#include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
+#include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 //MSC00-A. Compile cleanly at high warning levels
 
-
+int flag ;
+int false1 ;
 //Structure that holds candidate name and count of vote
 //DCL05-A. Use typedefs to improve code readability
 
@@ -98,14 +98,14 @@ void delFromfile(char sprn[15], int fno)
 				fseek(fp, 0, SEEK_SET);
 				fprintf(fp, "%d", (a + fno - 1)->count);
 				fclose(fp);
-				_getch();
+				getchar();
 				return;
 			}
 			//FIO35-C. Use feof() and ferror() to detect end-of-file and file errors
 			if (feof(fp))
 			{
 				printf("\nNot Found");
-				_getch();
+				getchar();
 				fclose(fp);
 				break;
 			}
@@ -163,5 +163,5 @@ void delFromfile(char sprn[15], int fno)
 
 		}
 	}
-	_getch();
+	getchar();
 }

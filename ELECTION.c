@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<curses.h>
+//#include<ncurses.h>
 #include<string.h>
 #include<stdlib.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
@@ -98,14 +98,14 @@ void delFromfile(char sprn[15], int fno)
 				fseek(fp, 0, SEEK_SET);
 				fprintf(fp, "%d", (a + fno - 1)->count);
 				fclose(fp);
-				getchar();
+				getch();
 				return;
 			}
 			//FIO35-C. Use feof() and ferror() to detect end-of-file and file errors
 			if (feof(fp))
 			{
 				printf("\nNot Found");
-				getchar();
+				getch();
 				fclose(fp);
 				break;
 			}
@@ -163,5 +163,5 @@ void delFromfile(char sprn[15], int fno)
 
 		}
 	}
-	getchar();
+	getch();
 }

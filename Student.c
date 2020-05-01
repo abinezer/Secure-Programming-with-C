@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<curses.h>
+//#include<ncurses.h>
 #include<string.h>
 #include<stdlib.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
@@ -7,6 +7,7 @@
 //Student Panel
 
 int flag; int false1;
+/*
 struct fun1
 {
 	int (*pqr)(char prn[15]);
@@ -14,6 +15,7 @@ struct fun1
 };
 
 struct fun1 fun1 = { .pqr = isSpecial , .lmn = isAuthentic };
+*/
 void stu()
 {
 	FILE* fp;
@@ -62,24 +64,24 @@ void stu()
 		if (len < 14 || len>14)
 		{
 			printf("\nInvalid PRN(Incorrect length)\nTry Again(Press Enter)");
-			getchar();
+			getch();
 			continue;
 		}
-		//val = isSpecial(prn);
-		val = fun1.pqr(prn);
+		val = isSpecial(prn);
+		//val = fun1.pqr(prn);
 		if (val == 1)
 		{
 			printf("\n  Blank number");
-			getchar();
+			getch();
 			false1++;
 			continue;
 		}
-		//res = isAuthentic(prn);
-		res = fun1.lmn(prn);
+		res = isAuthentic(prn);
+		//res = fun1.lmn(prn);
 		if (res != 1)
 		{
 			printf("\n  Try Again(Press Enter)");
-			getchar();
+			getch();
 			continue;
 		}
 		else
@@ -90,7 +92,7 @@ void stu()
 				if (ptr[rno - 1] != 0) //EXP20-C explicitly check if condition.
 				{
 					printf("\n  Your PRN entered is already voted\n  Contact Admin for furthur query");
-					getchar();
+					getch();
 					continue;
 				}
 			}
@@ -112,7 +114,7 @@ void stu()
 						{
 							printf("\n  The PRN %s has already voted\nContact Admin if it weren't you...!", prn);
 							fclose(fp);
-							getchar();
+							getch();
 							goto prn;
 						}
 						//FIO35-C. Use feof() and ferror() to detect end-of-file and file errors
@@ -138,11 +140,11 @@ void stu()
 			while (1)
 			{
 				printf("\n\n  Your Vote(Enter Number):");
-				v1 = getchar();
+				v1 = getch();
 				printf("*");
-				getchar();
+				getch();
 				printf("\n  Confirm Your Vote:");
-				v2 = getchar();
+				v2 = getch();
 				printf("*");
 				if (v1 == v2)
 					break;
@@ -157,7 +159,7 @@ void stu()
 			if ((v1 - 48) > num)
 			{
 				printf("\n  Invalid vote");
-				getchar();
+				getch();
 				goto vote;
 				//	break;
 			}
@@ -167,7 +169,7 @@ void stu()
 
 
 				ptr[rno - 1] = (v1 - 48);
-				getchar();
+				getch();
 				for (j = 0; j < num; j++)
 				{
 					if ((v1 - 48) == (j + 1))

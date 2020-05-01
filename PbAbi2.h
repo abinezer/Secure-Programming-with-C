@@ -1,9 +1,14 @@
 #ifndef PBABI2_H
 #define PBABI2_H
 
-
-extern void flcreate(int no);
-extern void delFromfile(char sprn[15], int fno);
+//static struct termios old, new;
+//void initTermios(int echo);
+//void resetTermios(void);
+//char getch_(int echo);
+//char getch(void);
+//char getche(void);
+void flcreate(int no);
+void delFromfile(char sprn[15], int fno);
 //DCL07-C.Include the appropriate type information in function declarators. 
 
 //int flag = 0;

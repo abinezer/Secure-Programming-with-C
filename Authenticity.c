@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<curses.h>
+//#include<ncurses.h>
 #include<string.h>
 #include<stdlib.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>

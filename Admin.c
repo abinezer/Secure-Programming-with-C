@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<curses.h>
+//#include<ncurses.h>
 #include<string.h>
 #include<stdlib.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
@@ -57,31 +57,36 @@ void admin()
 			//EXP20-C explicitly check if condition.
 		{
 			printf("Wrong Username");
-			getchar();
+			getch();
 			continue;
 		}
 		else
 		{
+			//printf("We are here. ");
 		password:
-			printf("Enter Password: ");
+			fflush(stdin);
+			printf("Enter Password only: \n");
+			fflush(stdin);
 			for (i = 0; i < 7; i++)
 			{
-				pass[i] = getchar();
-				printf("%c", '*');
+				char inputChar = getch();
+				pass[i] = inputChar;
+				putchar('*');
 			}
 			pass[i] = '\0';
+			printf("%s",pass);
 			if ((strcmp(pass, str2)) != 0)
 				//EXP20-C explicitly check if condition.
 			{
 				printf("\nWrong Password\n");
-				getchar();
+				getch();
 				goto password;
 			}
 			else
 			{
 
 				printf("\n\nADMIN LOGIN SUCCESSFULL(Press Enter)");
-				getchar();
+				getch();
 				while (1)
 				{
 					//clrscr();
@@ -152,7 +157,7 @@ void admin()
 									if (fpb == NULL)
 									{
 										printf("\nProcess Failed");
-										getchar();
+										getch();
 										break;
 									}
 									printf("\nEnter 0 to stop\nEnter blank");
@@ -170,7 +175,7 @@ void admin()
 								else
 								{
 									printf("\nInvalid option");
-									getchar();
+									getch();
 								}
 							}
 						}
@@ -210,7 +215,7 @@ void admin()
 							fclose(fp);
 						}
 						printf("Election Continued");
-						getchar();
+						getch();
 						break;
 						//MSC07-A. Detect and remove dead code
 						//TO DELETE VOTE FOR SELECTED PRN
@@ -276,7 +281,7 @@ void admin()
 
 						printf("\n\n\t\t\tVoting Percentage:%0.2f ", (tot / maxrollno) * 100);
 						//printf("\n\t\t\tTotal Illegal attempts:%d",false);
-						getchar();
+						getch();
 						//	flcreate(cnt);
 						break;
 
@@ -285,7 +290,7 @@ void admin()
 
 					default:
 						printf("Invalid Option");
-						getchar();
+						getch();
 
 					}
 				}

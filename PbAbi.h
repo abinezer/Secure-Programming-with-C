@@ -2,6 +2,15 @@
 #define PBABI_H
 //#include guards. 
 #define max_size 20
+#include <termios.h>
+#include <unistd.h>
+#include <stdio.h>
+ 
+/* reads from keypress, doesn't echo */
+int getch(void); 
+ 
+/* reads from keypress, and echoes */
+int getche(void); 
 typedef struct cand
 {
 	char nm[max_size];

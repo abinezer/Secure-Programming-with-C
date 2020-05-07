@@ -12,7 +12,7 @@ void delFromfile(char sprn[15], int fno);
 //DCL07-C.Include the appropriate type information in function declarators. 
 
 //int flag = 0;
-int cnt ;
+int numberOfCand ;
 //int false1 = 0;
 int fptr;
 extern int* ptr;

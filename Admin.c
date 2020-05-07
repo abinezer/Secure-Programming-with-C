@@ -20,6 +20,7 @@ void admin()
 	//char nm[50];
 	char ch;
 	char sp;
+	char const printMessage[15] = "Enter password";
 	//DCL32-C. Guarantee identifiers are unique
 
 	//char str2[8] = "SR@3111";
@@ -64,14 +65,16 @@ void admin()
 		{
 			//printf("We are here. ");
 		password:
+			//fflush(stdin);
+			
+			printf("%s: \n",printMessage);
 			fflush(stdin);
-			printf("Enter Password only: \n");
-			fflush(stdin);
+			fflush(stdout);
 			for (i = 0; i < 7; i++)
 			{
 				char inputChar = getch();
 				pass[i] = inputChar;
-				putchar('*');
+				//putchar('*');
 			}
 			pass[i] = '\0';
 			printf("%s",pass);
@@ -130,7 +133,7 @@ void admin()
 						//MEM01-A. Set pointers to dynamically allocated memory to NULL after they
 						//are released
 						//MEM31-C. Free dynamically allocated memory exactly once
-						cnt = no;
+						numberOfCand = no;
 
 						i = 0; j = 1;
 						while (i < no)
@@ -151,7 +154,7 @@ void admin()
 							else {
 								if (sp == '1')
 								{
-									fpb = fopen("blank.txt", "w");
+									fpb = fopen("isSpecial.txt", "w");
 									//FIO06-A. Create files with appropriate access permissions
 									//FIO11-A. Take care when specifying the mode parameter of fopen()
 									if (fpb == NULL)
@@ -195,10 +198,10 @@ void admin()
 						fseek(f1, 2, SEEK_CUR);
 						fscanf(f1, "%d", &maxrollno);
 						fseek(f1, 2, SEEK_CUR);
-						fscanf(f1, "%d", &cnt);
-						a = (CAND*)malloc(cnt * cand_size);
+						fscanf(f1, "%d", &numberOfCand);
+						a = (CAND*)malloc(numberOfCand * cand_size);
 						// INT01-C use size_t to represent the size of an object
-						for (i = 0; i < cnt; i++)
+						for (i = 0; i < numberOfCand; i++)
 						{
 							fseek(f1, 2, SEEK_CUR);
 							fscanf(f1, "%s", (a + i)->nm);
@@ -206,9 +209,9 @@ void admin()
 						fclose(f1);
 						flag = 1;
 						//DCL01-A. Do not reuse variable names in sub-scopes
-						for (i = 1; i <= cnt; i++)
+						for (i = 1; i <= numberOfCand; i++)
 						{
-							sprintf(text, "a%d.txt", i);
+							sprintf(text, "candidate%d.txt", i);
 							fp = fopen(text, "r+");
 							//FIO31-C. Do not simultaneously open the same file multiple times
 							fscanf(fp, "%d", &((a + i - 1)->count));
@@ -242,14 +245,14 @@ void admin()
 						//clrscr();
 						i = 0;
 						max = (a + i)->count;
-						while (i < cnt - 1)
+						while (i < numberOfCand - 1)
 						{
 							if ((a + i)->count > max)
 								max = (a + i)->count;
 							i++;
 						}
 						i = 0; j = 0;
-						for (i = 0; i < cnt - 1; i++)
+						for (i = 0; i < numberOfCand - 1; i++)
 						{
 							if (max == (a + i)->count)
 								j++;
@@ -258,7 +261,7 @@ void admin()
 							printf("\n\n\n\t\tTIE");
 						else
 						{
-							for (i = 0; i < cnt - 1; i++)
+							for (i = 0; i < numberOfCand - 1; i++)
 							{
 								if (max == (a + i)->count)
 								{
@@ -269,11 +272,11 @@ void admin()
 							}
 						}
 						tot = 0; i = 0;
-						for (i = 0; i < cnt; i++)
+						for (i = 0; i < numberOfCand; i++)
 							tot += ((a + i)->count);
 						printf("\n\n\n\t\t\t   Election statistics:\n");
 						i = 0;
-						while (i < cnt)
+						while (i < numberOfCand)
 						{
 							printf("\n\t\t\tVotes for %s= %d", (a + i)->nm, (a + i)->count);
 							i++;

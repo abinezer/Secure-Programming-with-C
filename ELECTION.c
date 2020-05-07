@@ -43,7 +43,7 @@ void flcreate(int no)
 
 	for (i = 1; i <= no; i++)
 	{
-		sprintf(text, "a%d.txt", i);
+		sprintf(text, "candidate%d.txt", i);
 		fp = fopen(text, "w");
 		fprintf(fp, "0\n");
 		fclose(fp);
@@ -72,10 +72,10 @@ void delFromfile(char sprn[15], int fno)
 	char text[20];
 	//DCL32-C. Guarantee identifiers are unique
 	//clrscr();
-	no = cnt;
+	no = numberOfCand;
 	if (flag != 1) //EXP20-C explicitly check if condition.
 	{
-		sprintf(text, "a%d.txt", fno);
+		sprintf(text, "candidate%d.txt", fno);
 		fp = fopen(text, "r");
 		while (1)
 		{
@@ -115,7 +115,7 @@ void delFromfile(char sprn[15], int fno)
 	{
 		while (k < no)
 		{
-			sprintf(text, "a%d.txt", k + 1);
+			sprintf(text, "candidate%d.txt", k + 1);
 			fp = fopen(text, "r");
 			//FIO11-A. Take care when specifying the mode parameter of fopen()
 			flg = 1;

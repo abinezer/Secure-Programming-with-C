@@ -67,8 +67,15 @@ void stu()
 			getch();
 			continue;
 		}
-		val = isSpecial(prn);
-		//val = fun1.pqr(prn);
+		
+		if(val == 0)
+		{
+			val = isSpecial(prn);
+			fp = fopen("isSpecial.txt","a+");
+			fprintf(fp, "%s\n", prn);
+			fclose(fp);
+		}
+		//printf("isSpecial passed...");
 		if (val == 1)
 		{
 			printf("\n  Blank number");
@@ -86,7 +93,7 @@ void stu()
 		}
 		else
 		{
-			num = cnt;
+			num = numberOfCand;
 			if (flag != 1)
 			{
 				if (ptr[rno - 1] != 0) //EXP20-C explicitly check if condition.
@@ -101,7 +108,7 @@ void stu()
 				//	checkfile:
 				while (k < num)
 				{
-					sprintf(text, "a%d.txt", k + 1);
+					sprintf(text, "candidate%d.txt", k + 1);
 					fp = fopen(text, "r"); //FIO11-A. Take care when specifying the mode parameter of fopen()
 					flg = 1;
 					while (flg)
@@ -141,11 +148,11 @@ void stu()
 			{
 				printf("\n\n  Your Vote(Enter Number):");
 				v1 = getch();
-				printf("*");
-				getch();
+				//printf("*");
+				//getch();
 				printf("\n  Confirm Your Vote:");
 				v2 = getch();
-				printf("*");
+				//printf("*");
 				if (v1 == v2)
 					break;
 				else
@@ -175,7 +182,7 @@ void stu()
 					if ((v1 - 48) == (j + 1))
 					{
 						(a + j)->count++;
-						sprintf(text, "a%d.txt", (j + 1));
+						sprintf(text, "candidate%d.txt", (j + 1));
 						fp = fopen(text, "r+");
 						fprintf(fp, "%d", (a + j)->count);
 						fseek(fp, 0, SEEK_END);

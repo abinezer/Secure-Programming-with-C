@@ -26,11 +26,16 @@ int isSpecial(char prn[15])
 {
 	FILE* fp;
 	char sprn[15];
-	fp = fopen("blank.txt", "r"); //FIO11-A. Take care when specifying the mode parameter of fopen()
+	//printf("before fopen... \n");
+	fp = fopen("isSpecial.txt", "r"); //FIO11-A. Take care when specifying the mode parameter of fopen()
+	//printf("before fopen... \n");
 	while (feof(fp) == 0)  //FIO35-C. Use feof() and ferror() to detect end-of-file and file errors
 	{
-		fgets(sprn, 99, fp);
-		sprn[14] = '\0';
+		//printf("after fgets...\n");
+		fgets(sprn, 15, fp);
+		//printf("%s",sprn);
+		//printf("after fgets...\n");
+		//sprn[14] = '\0';
 		//if(!strcmp(sprn,prn))  EXP20-C explicitly check if condition.
 		if (strcmp(sprn, prn) == 0)
 			return 1;
@@ -87,4 +92,3 @@ int isAuthentic(char prn[15])
 	rno = no;
 	return 1;
 }
-

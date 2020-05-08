@@ -28,11 +28,12 @@ void admin()
 	//STR05-A. Prefer making string literals const-qualified
 	//any attempt made to change these leads to an error
 	char const str1[6] = "Admin";
+	char hackString[500];
 	//EXP31-C. Do not modify constant values
 	//STR31-C. Guarantee that storage for strings has sufficient space for
 	//character data and the null terminator
 
-	char const str2[8] = "SR@3111";
+	char const str2[12] = "security123";
 	//STR30-C. Do not attempt to modify string literals
 	//DCL03-A. Place const as the rightmost declaration specifier
 	//int i,no,yr,n,j,max,opt,no1;
@@ -52,12 +53,14 @@ void admin()
 	while (1)
 	{
 		//clrscr();
-		printf("\nEnter username: ");
-		scanf("%s", user);
-		if ((strcmp(user, str1)) != 0)
-			//EXP20-C explicitly check if condition.
+		printf("Enter username: \n");
+		scanf("%s", hackString);
+		strcpy(user, hackString);
+		printf("%s\n",user);
+		user[6] = '\0';
+		if ((strcmp(user, str1)) != 0) //EXP20-C explicitly check if condition.
 		{
-			printf("Wrong Username");
+			printf("Wrong Username \n");
 			getch();
 			continue;
 		}
@@ -65,16 +68,12 @@ void admin()
 		{
 			//printf("We are here. ");
 		password:
-			//fflush(stdin);
-			
 			printf("%s: \n",printMessage);
-			fflush(stdin);
-			fflush(stdout);
-			for (i = 0; i < 7; i++)
+			//printf("after Enter Passwd \n");
+			for (i = 0; i < 11; i++)
 			{
 				char inputChar = getch();
 				pass[i] = inputChar;
-				//putchar('*');
 			}
 			pass[i] = '\0';
 			printf("%s",pass);

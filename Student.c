@@ -173,8 +173,6 @@ void stu()
 			else
 			{
 				printf("\n\nThanks for your precious vote(Press Enter)");
-
-
 				ptr[rno - 1] = (v1 - 48);
 				getch();
 				for (j = 0; j < num; j++)

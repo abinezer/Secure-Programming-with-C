@@ -6,8 +6,8 @@
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 //MSC00-A. Compile cleanly at high warning levels
 
-int flag ;
-int false1 ;
+variable flag ;
+variable false1 ;
 //Structure that holds candidate name and count of vote
 //DCL05-A. Use typedefs to improve code readability
 
@@ -15,7 +15,7 @@ int false1 ;
 
 void candname(CAND* a)
 {
-	FILE* f1;
+	file_pointer f1;
 	printf("Enter Candidate name:");
 	scanf("\n");
 	//gets(a->nm);
@@ -34,11 +34,11 @@ void candname(CAND* a)
 //FIO40-C. Reset strings on fgets() failure
 //fn that creates number of files equal to number of candidates
 //MSC07-A. Detect and remove dead code
-void flcreate(int no)
+void flcreate(variable no)
 {
-	FILE* fp;
-	int i;
-	char text[20];
+	file_pointer fp;
+	variable i;
+	String text;
 	//clrscr();
 
 	for (i = 1; i <= no; i++)
@@ -55,21 +55,21 @@ void flcreate(int no)
 
 //fn to delete illegal vote
 //MSC04-A. Use comments consistently and in a readable fashion
-void delFromfile(char sprn[15], int fno)
+void delFromfile(String sprn, variable fno)
 {
-	FILE* fp;
-	//int i=0,no,k=0,r=0,j=0,pos=0,flg=1;
+	file_pointer fp;
+	//variable i=0,no,k=0,r=0,j=0,pos=0,flg=1;
 	//DCL04-C No more than 1 var per declaration.
-	int i = 0;
-	int no;
-	int k = 0;
-	int r = 0;
-	int j = 0;
-	int pos = 0;
-	int flg = 1;
-	char str[16];
-	char vprn[16];
-	char text[20];
+	variable i = 0;
+	variable no;
+	variable k = 0;
+	variable r = 0;
+	variable j = 0;
+	variable pos = 0;
+	variable flg = 1;
+	String str;
+	String vprn;
+	String text;
 	//DCL32-C. Guarantee identifiers are unique
 	//clrscr();
 	no = numberOfCand;

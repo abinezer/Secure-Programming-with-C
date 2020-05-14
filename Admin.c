@@ -6,48 +6,53 @@
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 
 //MSC00-A. Compile cleanly at high warning levels
-int* ptr; int flag;
+int_pointer ptr;
+ variable flag;
 //Admin Panel
 void admin()
 {
-	FILE* f1, * fp, * fpb;
-	//char user[15],pass[15],prn[15],text[20],nm[50],ch,sp;
+	file_pointer f1;
+	file_pointer fp;
+	file_pointer  fpb;
+	//varchar user[15],pass[15],prn[15],text[20],nm[50],ch,sp;
 	//DCL04-C Not more than 1 var per declaration.
-	char user[15];
-	char pass[15];
-	char prn[15];
-	char text[20];
-	//char nm[50];
-	char ch;
-	char sp;
-	char const printMessage[15] = "Enter password";
+	
+	String user;
+	String pass;
+	String prn;
+	String text;
+	
+	varchar  ch;
+	varchar  sp;
+	String printMessage = "Enter password";
 	//DCL32-C. Guarantee identifiers are unique
 
 	//char str2[8] = "SR@3111";
 	//char str1[6] = "Admin";
 	//STR05-A. Prefer making string literals const-qualified
 	//any attempt made to change these leads to an error
-	char const str1[6] = "Admin";
-	char hackString[500];
+	varchar const str1[6] = "Admin";
+	varchar hackString[500];
 	//EXP31-C. Do not modify constant values
 	//STR31-C. Guarantee that storage for strings has sufficient space for
 	//character data and the null terminator
 
-	char const str2[12] = "security123";
+	varchar const str2[12] = "security123";
 	//STR30-C. Do not attempt to modify string literals
 	//DCL03-A. Place const as the rightmost declaration specifier
 	//int i,no,yr,n,j,max,opt,no1;
 	//DCL04-C Not more than 1 var per declaration.
-	int i;
-	int no;
-	//int yr;
-	//int n;
-	int j;
-	int max;
-	//int opt;
-	//int no1;
+	variable i;
+	variable no;
+	//variable yr;
+	//variable n;
+	variable j;
+	variable max;
+	//variable opt;
+	//variable no1;
 	float tot = 0.0;
-	char null[2] = "0";
+	//char null[2] = "0";
+	String null = "0";
 	// INT01-C use size_t to represent the size of an object
 	size_t cand_size = sizeof(CAND);
 	while (1)
@@ -72,7 +77,7 @@ void admin()
 			//printf("after Enter Passwd \n");
 			for (i = 0; i < 11; i++)
 			{
-				char inputChar = getch();
+				varchar  inputChar = getch();
 				pass[i] = inputChar;
 			}
 			pass[i] = '\0';

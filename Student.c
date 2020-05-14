@@ -6,47 +6,47 @@
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 //Student Panel
 
-int flag; int false1;
+variable flag; variable false1;
 /*
 struct fun1
 {
-	int (*pqr)(char prn[15]);
-	int (*lmn)(char prn[15]);
+	variable (*pqr)(String prn);
+	variable (*lmn)(String prn);
 };
 
 struct fun1 fun1 = { .pqr = isSpecial , .lmn = isAuthentic };
 */
 void stu()
 {
-	FILE* fp;
+	file_pointer fp;
 	CAND* b;
 
 	//char prn[15],text[20],d;
 	//char str[16],vprn[16];
 	//DCL04-C not more than 1 var per declaration
-	char prn[15];
-	char text[20];
+	String prn;
+	String text;
 	//char d;
-	char str[16];
-	char vprn[16];
-	char stp[2] = "0";
-	int flg = 1;
-	//int len,num,i,opt,j,res,k=0,nos,choice,roll,val;
+	String str;
+	String vprn;
+	String stp = "0";
+	variable flg = 1;
+	//variable len,num,i,opt,j,res,k=0,nos,choice,roll,val;
 	//DCL04-C not more than 1 var per declaration
-	int len;
-	int num;
-	int i;
-	//int opt;
-	int j;
-	int res;
-	int k = 0;
-	//int nos; //MSC13-A. Detect and remove unused values
-	//int choice;
-	//int roll;
-	int val;
+	variable len;
+	variable num;
+	variable i;
+	//variable opt;
+	variable j;
+	variable res;
+	variable k = 0;
+	//variable nos; //MSC13-A. Detect and remove unused values
+	//variable choice;
+	//variable roll;
+	variable val;
 	//char no;
-	char v1;
-	char v2;
+	varchar v1;
+	varchar v2;
 
 	b = a;
 

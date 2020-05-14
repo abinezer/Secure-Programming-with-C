@@ -7,20 +7,21 @@
 //char getch_(int echo);
 //char getch(void);
 //char getche(void);
-void flcreate(int no);
-void delFromfile(char sprn[15], int fno);
+void flcreate(variable no);
+void delFromfile(String sprn, variable fno);
 //DCL07-C.Include the appropriate type information in function declarators. 
 
-//int flag = 0;
-int numberOfCand ;
-//int false1 = 0;
-int fptr;
-extern int* ptr;
-int rno;
-int year;
-int maxrollno;
-int num1;
-char branch[6], br1[6];
-extern char n;
+//variable flag = 0;
+variable numberOfCand ;
+//variable false1 = 0;
+variable fptr;
+extern int_pointer ptr;
+variable rno;
+variable year;
+variable maxrollno;
+variable num1;
+String branch;
+String br1;
+extern varchar n;
 
 #endif

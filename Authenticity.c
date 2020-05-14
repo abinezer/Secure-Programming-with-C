@@ -22,10 +22,10 @@ char branch[6],br1[6];
 */
 
 //fn to check valid PRN
-int isSpecial(char prn[15])
+int isSpecial(String prn)
 {
-	FILE* fp;
-	char sprn[15];
+	file_pointer fp;
+	String sprn;
 	//printf("before fopen... \n");
 	fp = fopen("isSpecial.txt", "r"); //FIO11-A. Take care when specifying the mode parameter of fopen()
 	//printf("before fopen... \n");
@@ -44,14 +44,14 @@ int isSpecial(char prn[15])
 	return 0;
 }
 
-int isAuthentic(char prn[15])
+int isAuthentic(String prn)
 {
-	int i = 0;
-	int j = 0;
-	int no = 0;
-	int yr = 0;
-	char br[6];
-	char d;   //DCL04-C No more than 1 var per declaration.
+	variable i = 0;
+	variable j = 0;
+	variable no = 0;
+	variable yr = 0;
+	String br;
+	varchar d;   //DCL04-C No more than 1 var per declaration.
 	while (i < 4)
 	{
 		d = prn[i];

@@ -10,7 +10,7 @@
 /* reads from keypress, doesn't echo */
 int getch(void) {
     struct termios oldattr, newattr;
-    int ch;
+    variable ch;
     tcgetattr( STDIN_FILENO, &oldattr );
     newattr = oldattr;
     newattr.c_lflag &= ~( ICANON | ECHO );
@@ -23,7 +23,7 @@ int getch(void) {
 /* reads from keypress, and echoes */
 int getche(void) {
     struct termios oldattr, newattr;
-    int ch;
+    variable ch;
     tcgetattr( STDIN_FILENO, &oldattr );
     newattr = oldattr;
     newattr.c_lflag &= ~( ICANON );
@@ -80,8 +80,8 @@ getche() function definition.
 //#include<ncurses.h>
 
 
-char n;
-int* ptr;
+varchar n;
+int_pointer ptr;
 
 struct fun
 {
@@ -93,15 +93,15 @@ struct fun fun = { .abc = stu , .xyz = admin};
 int main(void)
 {
 	/*
-	int flag = 0;
-	int cnt = 0;
-	int false1 = 0;
-	int fptr;
+	variable flag = 0;
+	variable cnt = 0;
+	variable false1 = 0;
+	variable fptr;
 	int* ptr;
-	int rno;
-	int year;
-	int maxrollno;
-	int num1;
+	variable rno;
+	variable year;
+	variable maxrollno;
+	variable num1;
 	char branch[6], br1[6];
 	char n;
 	*/

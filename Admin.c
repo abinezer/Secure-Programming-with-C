@@ -3,6 +3,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include <bsd/string.h>
+#include<math.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 
@@ -25,7 +26,7 @@ void admin()
 	
 	varchar  ch;
 	varchar  sp;
-	String printMessage = "Enter password";
+	//String printMessage = "Enter password";
 	//DCL32-C. Guarantee identifiers are unique
 
 	//char str2[8] = "SR@3111";
@@ -62,7 +63,7 @@ void admin()
 		printf("Enter username: \n");
 		scanf("%s", hackString);
 		strlcpy(user, hackString, sizeof(user));
-		printf("%s\n",user);
+		//printf("%s\n",user);
 		user[6] = '\0';
 		if ((strcmp(user, str1)) != 0) //EXP20-C explicitly check if condition.
 		{
@@ -74,15 +75,21 @@ void admin()
 		{
 			//printf("We are here. ");
 		password:
-			printf("%s: \n",printMessage);
+			printf("%s: ","Enter Password: ");
+			scanf("%s", pass);
+			printf("%s", pass);
 			//printf("after Enter Passwd \n");
-			for (i = 0; i < 11; i++)
-			{
-				varchar  inputChar = getch();
-				pass[i] = inputChar;
-			}
-			pass[i] = '\0';
-			printf("%s",pass);
+			//for (i = 0; i < 11; i++)
+		    //{
+				//varchar  inputChar = getch();
+				//pass[i] = inputChar;
+			//}
+			//pass[i] = '\0';
+			//for(i = 0; i< 12; i++)
+			//{
+			//	printf("%c",pass[i]);
+			//}
+			
 			if ((strcmp(pass, str2)) != 0)
 				//EXP20-C explicitly check if condition.
 			{
@@ -107,20 +114,28 @@ void admin()
 						//clrscr();
 						printf("\nNew Election Initiation:\n");
 						f1 = fopen("PreviousElection.txt", "w");
-						//FIO31-C. Do not simultaneously open the same file multiple times
-						printf("\nElections for which Year: ");
-						scanf("%d", &year);
-						printf("Enter branch code:");
-						scanf("%s", branch);
-						printf("Enter max roll no.:");
-						scanf("%d", &maxrollno);
-						printf("Enter the no. of candidates:");
-						scanf("%d", &no);
-
+						details:
+							//FIO31-C. Do not simultaneously open the same file multiple times
+							printf("\nElections for which Year: ");
+							scanf("%d", &year);
+							printf("Enter branch code:");
+							scanf("%s", branch);
+							printf("Enter max roll no.:");
+							scanf("%d", &maxrollno);
+							printf("Enter the no. of candidates:(max 5) ");
+							scanf("%d", &no);
+							if(floor (log10 (abs (year))) + 1 > 4 || (sizeof(branch)/sizeof(String)) > 5 || floor (log10 (abs (maxrollno))) + 1 > 4 || floor (log10 (abs (no))) + 1 > 5)
+							{
+								printf("Wrong details entered. Please try again. ");
+								goto details;
+							}
 						//ptr = (int*)malloc((maxrollno) * sizeof(int));
 						//MEM02-A. Do not cast the return value from malloc()
 						ptr = (int*)malloc((maxrollno) * sizeof(int));
-
+						if (ptr == NULL)
+						{
+							exit(1);
+						}
 						//MEM03-A. Clear sensitive information stored in dynamic memory prior to
 						//deallocation
 
@@ -135,6 +150,10 @@ void admin()
 						flcreate(no);
 						//ARR31-C. Use consistent array notation across all source files
 						a = (CAND*)malloc(no * cand_size);
+						if(a == NULL)
+						{
+							exit(0);
+						}
 						//MEM01-A. Set pointers to dynamically allocated memory to NULL after they
 						//are released
 						//MEM31-C. Free dynamically allocated memory exactly once
@@ -205,6 +224,10 @@ void admin()
 						fseek(f1, 2, SEEK_CUR);
 						fscanf(f1, "%d", &numberOfCand);
 						a = (CAND*)malloc(numberOfCand * cand_size);
+						if(a == NULL)
+						{
+							exit(0);	
+						}
 						// INT01-C use size_t to represent the size of an object
 						for (i = 0; i < numberOfCand; i++)
 						{

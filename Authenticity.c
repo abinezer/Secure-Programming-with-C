@@ -2,6 +2,7 @@
 //#include<ncurses.h>
 #include<string.h>
 #include<stdlib.h>
+#include <bsd/string.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 
@@ -71,7 +72,7 @@ int isAuthentic(String prn)
 		i++;
 	}
 	br[j] = '\0';
-	strcpy(br1, br);
+	strlcpy(br1, br, sizeof(br1));
 	//if(strcmp(br,branch))
 	if (strcmp(br, branch) != 0)  //EXP20-C explicitly check if condition.
 	{

@@ -2,6 +2,7 @@
 //#include<ncurses.h>
 #include<string.h>
 #include<stdlib.h>
+#include <bsd/string.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
 
@@ -60,7 +61,7 @@ void admin()
 		//clrscr();
 		printf("Enter username: \n");
 		scanf("%s", hackString);
-		strcpy(user, hackString);
+		strlcpy(user, hackString, sizeof(user));
 		printf("%s\n",user);
 		user[6] = '\0';
 		if ((strcmp(user, str1)) != 0) //EXP20-C explicitly check if condition.

@@ -1,5 +1,6 @@
 #include<string.h>
 #include<stdlib.h>
+#include <bsd/string.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi.h>
 #include</home/abishai/Documents/Secure-Programming-with-C/PbAbi2.h> //PRE08-C. Guarantee that header file names are unique
  
